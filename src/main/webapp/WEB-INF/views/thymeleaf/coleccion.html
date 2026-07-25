@@ -13,72 +13,88 @@
         }
 
         .mythic-panel {
-            border: 2px solid #444;
-            padding: 10px;
-            border-radius: 10px;
-            background: rgba(34, 34, 34, 0.82);
-            backdrop-filter: blur(4px);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.2s;
-        }
+    border: 2px solid #444;
+    padding: 10px 10px 35px 10px;
+    border-radius: 7px;
+    background: rgba(34, 34, 34, 0.82);
+    backdrop-filter: blur(4px);
+    height: 405px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s;
+}
+		
         .mythic-panel:hover {
             transform: translateY(-5px);
         }
 
         .carta-activa {
-            border-color: #d4af37;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
-        }
+    background: linear-gradient(180deg, #222222d1 60%, #0000004a 100%);
+    border-color: #d4af37;
+    box-shadow: 0 0 20px rgb(212 175 55 / 59%), 0px 7px 10px 3px black;
+}
+		
         .carta-apagada {
             opacity: 0.35;
             filter: grayscale(100%);
         }
 
         .carta-nombre {
-            font-size: 0.8rem;
-        }
+    font-size: 20px;
+    margin-top: 15px;
+    text-shadow: 3px 3px 0px black, 0px 0px 20px #e5a93ba1;
+}
 
         .carta-desc {
-            font-size: 0.7rem;
-            min-height: 32px;
-        }
+    font-size: 15px;
+    text-shadow: 3px 3px 0px black;
+    margin: 0px 0px -15px 0px;
+}
+		
         a.btn.btn-outline-warning {
-            font-family: 'Montserrat';
-            border: 2.7px solid #e5a93b;
-            padding: 10px 20px;
-            font-size: 20px;
-            border-radius: 5px;
-            background-color: #131316;
-            color: #e5a93b;
-            box-shadow: 0px 0px 10px 0px rgb(229 169 59 / 16%);
-            transition: all 0.2s ease-in-out;
-            text-decoration: none;
-            display: inline-block;
-            margin-bottom: 35px;
-        }
+    margin: 0px 0px 0px -30px;
+    background: linear-gradient(180deg, #131316 60%, #e5a93b40 100%);
+    font-family: 'Montserrat';
+    border: 2.7px solid #e5a93b;
+    padding: 10px 20px 10px 20px;
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: #131316;
+    color: #e5a93b;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 35px;
+    text-transform: uppercase;
+    box-shadow: 0px 7px 0px black;
+    text-shadow: 0.3px 0px 0px #e5a93b, 3px 3px 0px black;
+}
 
         a.btn.btn-outline-warning:hover {
-            background-color: #e5a93b;
-            color: #101010;
-            transform: translateY(-3px);
-            box-shadow: 0px 0px 20px rgba(229, 169, 59, 0.4);
-        }
+    transform: translateY(-3px);
+    box-shadow: 0px 0px 20px 0px rgb(229 169 59 / 40%), 0px 7px 0px black !important;
+}
 
         .carta-marco {
-            width: 100%;
-            aspect-ratio: 7 / 10;
-            background-color: #2A2A30;
-            border: 1px solid #404040;
-            border-radius: 6px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .carta-marco img { width: 100%; height: 100%; object-fit: contain; }
-        .carta-sin-arte {
+    width: 100%;
+    aspect-ratio: 7 / 10;
+    background-color: #2A2A30;
+    border: 1px solid #404040;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 5px 10px #000000a8 !important;
+}
+		
+        .carta-marco img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+        
+		.carta-sin-arte {
             color: #A0A0A5;
             font-size: 0.72rem;
             font-weight: 600;
@@ -87,11 +103,54 @@
             text-align: center;
             padding: 8px;
         }
+		
         .grilla-cartas {
-            display: grid;
-            grid-template-columns: repeat(7, minmax(0, 1fr));
-            gap: 1rem;
-        }
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.text-bg-warning {
+    color: #000 !important;
+    background-color: RGBA(255, 193, 7, var(--bs-bg-opacity, 1)) !important;
+    text-transform: uppercase;
+    font-size: 10px !important;
+    text-align: center;
+    box-shadow: 0px 5px 5px #00000052;
+    border: 1.5px solid black;
+    text-shadow: 0.3px 0px 0px black;
+}
+
+span.badge.text-bg-dark.border.border-secondary {
+    text-transform: uppercase;
+    font-size: 10px !important;
+    text-align: center;
+    box-shadow: 0px 5px 5px #00000052;
+    text-shadow: 0.3px 0px 1px white;
+}
+
+h2.text-center.flex-grow-1.mb-0.fw-bold {
+    text-transform: uppercase;
+    font-family: 'Montserrat';
+    color: #e5a93b;
+    font-weight: 900;
+    font-size: 4rem;
+    letter-spacing: 5px;
+    text-shadow: 0px 5px 0px black, 0px 0px 50px #e5a93b, 0px 0px 50px #e5a93b;
+    text-decoration: underline;
+    text-decoration-thickness: 5px;
+    text-underline-offset: 13px;
+    margin-bottom: 20px !important;
+    margin-top: -40px !important;
+}
+
+span.position-absolute.top-0.start-100.translate-middle.badge.rounded-pill.bg-danger {
+    z-index: 10;
+    box-shadow: 0 0 5px #000;
+    font-size: 15px;
+    text-shadow: 2px 2px 0px black, 0px 0px 20px white;
+}
+		
         @media (max-width: 991.98px) { .grilla-cartas { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
         @media (max-width: 767.98px) { .grilla-cartas { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
         @media (max-width: 575.98px) { .grilla-cartas { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
