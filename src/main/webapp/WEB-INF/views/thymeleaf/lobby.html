@@ -6,14 +6,15 @@
     <title>Lobby - MythicStack</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" th:href="@{/css/main.css}" />
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800&display=swap');
 
         .mythic-panel {
-            background-color: rgba(42, 42, 48, 0.45);
-            backdrop-filter: blur(6px);
+            background-color: rgb(0 0 0 / 0%);
+            backdrop-filter: blur(5px);
+            border: 1.5px solid #d4af37e6;
         }
 
         .titulo-lobby {
@@ -21,7 +22,8 @@
             font-weight: 800;
             letter-spacing: 4px;
             color: var(--game-epic);
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            text-shadow: 0 0 50px rgb(255 195 0), 5px 5px 0px black, 1.5px 0px 0px #ffff0045;
+            font-size: 45px;
         }
 
         .btn-lobby {
@@ -32,6 +34,7 @@
             border: 1px solid #d4af37 !important;
             transition: 0.3s;
         }
+
         .btn-lobby:hover,
         .btn-lobby:focus,
         .btn-lobby:active,
@@ -40,39 +43,76 @@
             color: #d4af37 !important;
             box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
         }
+
         .btn-comenzar {
+            text-shadow: 0.5px 0px 0.5px black, 0px 1.5px 0px #ffffff, 0px 0px 10px white;
+            background: linear-gradient(200deg, #ffffff -10%, #ffc300 60%);
             font-family: 'Montserrat';
-            font-weight: 800;
-            letter-spacing: 2px;
-            background-color: #8a0303;
-            color: white !important;
-            border: 1px solid #ff4d4d !important;
-            box-shadow: 0 0 15px rgba(138, 3, 3, 0.5);
+            background-color: #d4af37;
+            color: #000000 !important;
+            border: 3px solid black !important;
+            box-shadow: 0px 7px 0px #000000, 0px 0px 50px 0px #ffc3007d;
             transition: all 0.3s ease;
             text-transform: uppercase;
         }
 
+        a.btn.btn-lg.btn-lobby {
+            box-shadow: 0px 2px 0px 0px #d4af37, 0px 10px 0px black;
+            letter-spacing: normal;
+            text-shadow: 2px 2px 0px black;
+            margin-bottom: 5px;
+        }
+
+        button#dropdownIntercambio {
+            box-shadow: 0px 2px 0px 0px #d4af37, 0px 10px 0px black;
+            letter-spacing: normal;
+            text-shadow: 2px 2px 0px black;
+            margin-bottom: 5px;
+        }
+
+        .mb-2 {
+            margin-bottom: 6px;
+        }
+
+        .mt-4 {
+            margin-top: 31px;
+        }
+
         .btn-comenzar:hover {
-            transform: scale(1.05);
-            background-color: #b30000;
-            box-shadow: 0 0 25px rgba(255, 77, 77, 0.6);
-            color: white !important;
-            border-color: white !important;
+            transform: scale(1.03);
+            transition: 0.2s;
         }
 
         .btn-cerrar-sesion {
+            background: linear-gradient(180deg, #ffff004d 0%, #bf0000 60%);
             font-family: 'Montserrat';
             letter-spacing: 1px;
-            background-color: transparent;
-            color: #8a0303 !important;
-            border: 1px solid #8a0303 !important;
+            background-color: #bf0000;
+            color: yellow;
+            border: 3px solid #d4af37 !important;
             transition: 0.3s;
-            padding: 6px 20px;
+            padding: 7px 23px 7px 23px;
+            text-transform: uppercase;
+            font-size: 20px;
+            box-shadow: 0px 7px 0px 0px black, inset -3px 3px 0px #0000002e;
+            text-shadow: 0.5px 0px 0px #ffff00, 0px 1.5px 0px black;
         }
+
         .btn-cerrar-sesion:hover {
-            background-color: rgba(138, 3, 3, 0.15) !important;
-            color: #ff4d4d !important;
-            border-color: #ff4d4d !important;
+            transform: scale(1.05);
+            transition: 0.1s;
+            background: linear-gradient(180deg, #ffff004d 0%, #bf0000 60%);
+            font-family: 'Montserrat';
+            letter-spacing: 1px;
+            background-color: #bf0000;
+            color: yellow;
+            border: 3px solid #d4af37 !important;
+            transition: 0.3s;
+            padding: 7px 23px 7px 23px;
+            text-transform: uppercase;
+            font-size: 20px;
+            box-shadow: 0px 7px 0px 0px black, inset -3px 3px 0px #0000002e;
+            text-shadow: 0.5px 0px 0px #ffff00, 0px 1.5px 0px black;
         }
 
 
@@ -90,11 +130,14 @@
         Aventurero
     </span>...
             Tenés
-            <span style="color: #e5a93b; font-weight: 700;" th:text="${session.USUARIO != null ? session.USUARIO.oro : 0}">0</span>
+            <span style="color: #e5a93b; font-weight: 700;"
+                  th:text="${session.USUARIO != null ? session.USUARIO.oro : 0}">0</span>
             de Oro bajo tu nombre, sos Nivel
-            <span style="color: #0dcaf0; font-weight: 700;" th:text="${session.USUARIO != null ? session.USUARIO.nivel : 1}">1</span>
+            <span style="color: #0dcaf0; font-weight: 700;"
+                  th:text="${session.USUARIO != null ? session.USUARIO.nivel : 1}">1</span>
             con
-            <span style="color: #0dcaf0; font-weight: 700;" th:text="${session.USUARIO != null ? session.USUARIO.experiencia : 0}">0</span>
+            <span style="color: #0dcaf0; font-weight: 700;"
+                  th:text="${session.USUARIO != null ? session.USUARIO.experiencia : 0}">0</span>
             de Experiencia en Combate. ¿Qué vas a hacer ahora?
         </h4>
 
@@ -113,7 +156,8 @@
             </a>
 
             <div class="dropdown">
-                <button class="btn btn-lg dropdown-toggle w-100 btn-lobby" type="button" id="dropdownIntercambio" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-lg dropdown-toggle w-100 btn-lobby" type="button" id="dropdownIntercambio"
+                        data-bs-toggle="dropdown" aria-expanded="false">
                     Contratos e Intercambios
                 </button>
                 <ul class="dropdown-menu w-100 dropdown-menu-dark" aria-labelledby="dropdownIntercambio">
@@ -124,7 +168,7 @@
 
         </div>
 
-        <div class="mt-4 pt-3" style="border-top: 1px solid rgba(138,3,3,0.35); max-width: 240px; margin-left: auto; margin-right: auto;">
+        <div class="mt-4" style="max-width: 240px; margin-left: auto; margin-right: auto;">
             <a th:href="@{/logout}" class="btn btn-sm btn-cerrar-sesion">Cerrar Sesión</a>
         </div>
 
