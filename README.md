@@ -1,4 +1,4 @@
-<div align="center">
+<div align="left">
   <h1>🃏 <span style="color: #FFD700;">MythicStack</span> 🃏</h1>
 
   <p>Proyecto final de la materia <strong>Taller Web 1</strong>.</p>
@@ -47,6 +47,7 @@
   <img src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white" alt="Spring Boot" />
   <img src="https://img.shields.io/badge/Spring_MVC-6DB33F?style=for-the-badge&logo=spring&logoColor=white" alt="Spring MVC" />
   <img src="https://img.shields.io/badge/Thymeleaf-005F0F?style=for-the-badge&logo=Thymeleaf&logoColor=white" alt="Thymeleaf" />
+  <img src="https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=hibernate&logoColor=white" alt="Hibernate" />
 
   <h3>FRONTEND</h3>
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" />
@@ -63,11 +64,18 @@
   <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" />
   <img src="https://img.shields.io/badge/Git-F05033?style=for-the-badge&logo=git&logoColor=white" alt="Git" />
   <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
+  <img src="https://img.shields.io/badge/Trello-0052CC?style=for-the-badge&logo=trello&logoColor=white" alt="Trello" />
 
   <br><br>
 
+  <div align="center">
   <h2>📸 VISTAS DEL JUEGO 📸</h2>
-  <p>Próximamente.</p>
+  <img src="1.JPG" alt="Lobby" width="800">
+
+<img src="2.JPG" alt="Deckbuilding" width="800">
+
+<img src="3.JPG" alt="Combate" width="800">
+</div>
 
   <br>
 
