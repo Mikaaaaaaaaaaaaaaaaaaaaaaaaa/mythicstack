@@ -8,12 +8,12 @@
     <link rel="stylesheet" th:href="@{/css/main.css}" />
 
     <style>
-        body { background-color: #120c0c; color: #f0ead6;font-family: 'Courier New', Courier, monospace; }
-        .titulo-mercado { font-family: 'Cinzel', serif; color: #8b0000; text-shadow: 0 0 10px rgba(139,0,0,0.5); }
+        body { background-color: #120c0c; color: #f0ead6;font-family: 'Montserrat'; }
+        .titulo-mercado { font-family: 'Montserrat'; color: #8b0000; text-shadow: 0 0 10px rgba(139,0,0,0.5); }
         .card-trade { background-color: #1a1111; border: 1px solid #4a1212; border-radius: 6px; transition: transform 0.3s; cursor: pointer; }
         .card-trade:hover { transform: scale(1.03); border-color: #d4af37; }
         .card-trade.seleccionada { border: 2px solid #d4af37; box-shadow: 0 0 15px rgba(212,175,55,0.4); }
-        .btn-trade { background-color: #8b0000; color: #fff; font-family: 'Cinzel', serif; font-weight: bold; border-radius: 6px; border: none; }
+        .btn-trade { background-color: #8b0000; color: #fff; font-family: 'Montserrat'; font-weight: bold; border-radius: 6px; border: none; }
         .btn-trade:hover { background-color: #b30000; color: #fff; }
 
         .carta-marco {
@@ -47,7 +47,7 @@
         @media (max-width: 575.98px) { .grilla-cartas { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
         .btn-trade:disabled { background-color: #3a1111; color: #7a6a6a; cursor: not-allowed; }
-        .btn-mythic-back { font-family: 'Cinzel', serif; color: #d4af37 !important; border: 1px solid #d4af37 !important; background-color: transparent; padding: 10px 25px; border-radius: 6px; transition: all 0.3s; text-decoration: none; display: inline-block; }
+        .btn-mythic-back { font-family: 'Montserrat'; color: #d4af37 !important; border: 1px solid #d4af37 !important; background-color: transparent; padding: 10px 25px; border-radius: 6px; transition: all 0.3s; text-decoration: none; display: inline-block; }
         .btn-mythic-back:hover { background-color: rgba(212,175,55,0.15) !important; }
         .badge-rarity { background-color: transparent !important; border: 1px solid #d4af37 !important; color: #d4af37 !important; font-size: 0.75rem; font-weight: 700; padding: 4px 8px; }
         .carta-solicitada-box { background-color: #1a1111; border: 1px solid #4a1212; border-radius: 8px; padding: 20px; max-width: 280px; margin: 0 auto; }

@@ -4,61 +4,229 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MythicStack - Combate</title>
-    <link rel="stylesheet" th:href="@{/css/main.css}" />
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
     <style>
-        body { background-color: #0c0c0e; font-family: 'Courier New', Courier, monospace; color: #ffffff; margin: 0; padding: 10px 20px; height: 100vh; box-sizing: border-box; overflow: hidden; display: flex; flex-direction: column; align-items: center; /* Centramos todo */ }
-        h2 { margin: 5px 0; font-size: 22px; } /* Esto achica el espacio gigante de arriba */
 
-        .arena { display: flex; justify-content: space-around; align-items: center; margin: 10px auto; width: 100%; max-width: 900px; flex-grow: 1; /* NUEVO: Permite que la arena crezca pero no empuje todo */ max-height: 400px; /* NUEVO: Limitamos el alto de la arena para que no aplaste la mano */ }
-        .personaje { background-color: rgba(26, 26, 31, 0.85); border: 2px solid #555; border-radius: 8px; padding: 15px 20px; width: 280px; box-shadow: 0 0 15px rgba(0, 0, 0, 0.8); backdrop-filter: blur(4px); }
-        .jugador { border-color: #4CAF50; }
-        .enemigo { border-color: #e63946; }
-        .hp-bar { font-size: 24px; font-weight: bold; margin: 10px 0 0 0; }
-        .hp-jugador { color: #4CAF50; }
-        .hp-enemigo { color: #e63946; }
-        .retrato-pj { width: 140px; height: 140px; object-fit: cover; border-radius: 50%; border: 3px solid; margin: 0 auto; display: block; box-shadow: 0 0 15px rgba(0,0,0,0.8); }
-        .jugador .retrato-pj { border-color: #4CAF50; }
-        .enemigo .retrato-pj { border-color: #e63946; }
+        body {
+            background-color: #0c0c0e;
+            font-family: 'Montserrat';
+            color: #ffffff;
+            padding: 10px 20px;
+            height: 100vh;
+            box-sizing: border-box;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            align-items: center;
+            justify-content: center;
+        }
 
-        .log-box { background-color: rgba(0, 0, 0, 0.7); border: 1px solid #e5a93b; color: #e5a93b; padding: 8px 15px; margin: 5px auto 10px auto; max-width: 600px; font-size: 15px; border-radius: 4px; }
+        h2 {
+            font-family: 'Montserrat';
+            color: #e5a93b;
+            font-weight: 900;
+            font-size: 4rem;
+            letter-spacing: 5px;
+            text-shadow: 0px 5px 0px black, 0px 0px 50px #e5a93b, 0px 0px 50px #e5a93b;
+            text-decoration: underline;
+            text-decoration-thickness: 5px;
+            text-underline-offset: 13px;
+            margin-bottom: 20px !important;
+            margin-top: 0px !important;
+        }
 
-        .mano { display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 15px; width: 100%; margin-bottom: 20px; z-index: 10; }
-        .mano form { margin: 0; display: flex; }
-        .muerto { display: none; }
+        .arena {
+            display: flex;
+            margin: 10px auto;
+            width: 100%;
+            max-width: 950px;
+            flex-grow: 1;
+            max-height: 400px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .personaje {
+            background-color: rgba(26, 26, 31, 0.85);
+            border: 2px solid #555;
+            border-radius: 8px;
+            padding: 15px 20px;
+            width: 280px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(4px);
+        }
+
+        .jugador {
+            background: linear-gradient(180deg, #18181b9e 60%, #4caf5040 100%);
+            border-color: #4CAF50;
+            border-radius: 7px;
+            box-shadow: 0px 7px 15px black, 0px 0px 50px #4caf508c;
+            max-width: 260px;
+            text-align: center !important;
+            text-shadow: 0px 4px 0px black;
+            font-size: 17px;
+            text-transform: uppercase;
+        }
+
+        .enemigo {
+            background: linear-gradient(180deg, #18181b9e 60%, #e639464d 100%);
+            border-color: #e63946;
+            border-radius: 7px;
+            box-shadow: 0px 7px 15px black, 0px 0px 50px #e63946;
+            max-width: 260px;
+            text-align: center !important;
+            text-shadow: 0px 4px 0px black;
+            font-size: 17px;
+            text-transform: uppercase;
+        }
+
+        .hp-bar {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px 0 0 0;
+        }
+
+        .hp-jugador {
+            color: #4CAF50;
+        }
+
+        .hp-enemigo {
+            color: #e63946;
+        }
+
+        .retrato-pj {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid;
+            margin: 0 auto;
+            display: block;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+        }
+
+        .jugador .retrato-pj {
+            border-color: #4CAF50;
+        }
+
+        .enemigo .retrato-pj {
+            border-color: #e63946;
+        }
+
+        .log-box {
+            background: linear-gradient(0deg, #181818 50%, #e5a93b30 100%);
+            background-color: rgb(24 24 24);
+            border: 1px solid #e5a93b;
+            color: #e5a93b;
+            padding: 8px 15px;
+            margin: 10px auto 0px auto;
+            max-width: 600px;
+            font-size: 17px;
+            border-radius: 5px;
+            text-align: center;
+            text-shadow: 2px 2px 0px black;
+            box-shadow: 0px 7px 15px black;
+        }
+
+        .mano {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+            margin-bottom: 20px;
+            z-index: 10;
+            zoom: 1.3;
+        }
+
+        span.card-name {
+            text-shadow: 0px 3px 0px black, 0.3px 0px 1px #e5a93b;
+        }
+
+        span.card-stat.util {
+            color: white !important;
+            font-size: 13px !important;
+            text-shadow: 0px 3px 0px black, 0px 0px 15px #ffffff40;
+        }
+
+        span.card-stat {
+            color: white !important;
+            font-size: 13px !important;
+            text-shadow: 0px 3px 0px black, 0px 0px 15px #ffffff40;
+        }
+
+        .mano form {
+            margin: 0;
+            display: flex;
+        }
+
+        .muerto {
+            display: none;
+        }
 
         .carta-btn {
             background: #18181b;
-            border: 2px solid #3f3f46;
+            border: 2.5px solid #3f3f46;
             color: white;
             padding: 10px;
             border-radius: 8px;
             cursor: pointer;
-            font-family: 'Courier New', Courier, monospace;
+            font-family: 'Montserrat';
             transition: all 0.2s ease;
-            width: 180px;
-            height: 290px;
+            width: 150px;
+            height: 280px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.7);
             box-sizing: border-box;
+            box-shadow: 0px 10px 15px black;
+            background: linear-gradient(180deg, #181818 80%, #000000 100%) !important;
+            justify-content: space-between;
         }
-        .carta-btn:hover { background: #27272a; border-color: #e5a93b; transform: translateY(-10px); }
+
+        .carta-btn:hover {
+            background: #27272a;
+            border-color: #e5a93b;
+            transform: translateY(-10px);
+            box-shadow: 0px 0px 20px 0px #e5a93b78;
+        }
 
         .carta-btn .card-img {
             width: 100%;
             height: 170px;
+            aspect-ratio: 7 / 10;
             object-fit: cover;
             object-position: center;
             background-color: transparent;
-            border-radius: 4px;
-            border: none;
+            border-radius: 5px;
             margin-bottom: 5px;
+            box-shadow: 0px 5px 5px #00000080;
+            border: 1.5px solid #404040;
         }
 
-        .carta-btn .card-name { font-size: 14px; font-weight: bold; color: #e5a93b; margin: 4px 0; width: 100%; line-height: 1.1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; white-space: normal; }
-        .carta-btn .card-stat { font-size: 13px; font-weight: bold; color: #d4d4d8; margin-bottom: 4px; }
+        .carta-btn .card-name {
+            font-size: 14px;
+            font-weight: bold;
+            color: #e5a93b;
+            margin: 4px 0;
+            width: 100%;
+            line-height: 1.1;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            white-space: normal;
+        }
+
+        .carta-btn .card-stat {
+            font-size: 13px;
+            font-weight: bold;
+            color: #d4d4d8;
+            margin-bottom: 4px;
+        }
+
         .carta-btn .card-stat.util {
             color: #8a8a93;
             font-size: 11px;
@@ -67,10 +235,50 @@
             line-height: 1.2;
         }
 
-        .deck-panel { position: fixed; bottom: 40px; right: 40px; background-color: #121215; border: 2px solid #e5a93b; border-radius: 8px; padding: 10px 18px; box-shadow: 0 0 15px rgba(229, 169, 59, 0.15); z-index: 100; text-align: center; letter-spacing: 1px; }
-        .deck-panel .deck-label { display: block; color: #a1a1aa; font-size: 10px; font-weight: bold; }
-        .deck-panel .num-cartas { display: block; color: #e5a93b; font-size: 26px; font-weight: 900; margin-top: 2px; }
+        #id_vs {
+            font-size: 105px;
+            font-weight: 900;
+            background: linear-gradient(to bottom, #ffffff 0%, #ffff00 35%, #ff9800 50%, #b84d00 90%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 150px #ff9800;
+            filter: drop-shadow(0px 10px 0px black) drop-shadow(0px 0px 60px #ff9800);
+        }
+
+        .deck-panel {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: linear-gradient(180deg, #131316 40%, #e5a93b40 150%);
+            font-family: 'Montserrat';
+            border: 2.7px solid #e5a93b;
+            padding: 10px 20px 10px 20px;
+            border-radius: 5px;
+            background-color: #131316;
+            text-transform: uppercase;
+            box-shadow: 0px 7px 0px black;
+            text-shadow: 0.3px 0px 0px #e5a93b, 3px 3px 0px black;
+            text-align: center;
+        }
+
+        .deck-panel .deck-label {
+            display: block;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .deck-panel .num-cartas {
+            display: block;
+            color: #e5a93b;
+            font-size: 26px;
+            font-weight: 900;
+            margin-top: 2px;
+        }
     </style>
+
 </head>
 <body th:with="rutaFondo=@{/img/{archivo}(archivo=${configZona.archivoFondo})}"
       th:style="|background-image: url('${rutaFondo}'); background-size: cover; background-position: center; background-attachment: fixed;|">
@@ -86,6 +294,8 @@
         <img th:src="@{/img/{img}(img=${imagenJugador})}" class="retrato-pj" alt="Jugador">
         <div class="hp-bar hp-jugador">HP: <span th:text="${partida.hpJugador}"></span></div>
     </div>
+
+    <h1 id="id_vs">VS</h1>
 
     <div class="personaje enemigo">
         <h3 th:text="${partida.enemigo.nombre}"></h3>
@@ -106,9 +316,11 @@
 
             <span class="card-name">[<span th:text="${carta.nombre}"></span>]</span>
 
-            <span class="card-stat" th:if="${carta.tipo == 'ATAQUE'}" th:text="'Daño: ' + (${carta.danoMin != null ? carta.danoMin : 0}) + ' - ' + (${carta.danoMax != null ? carta.danoMax : 0})"></span>
+            <span class="card-stat" th:if="${carta.tipo == 'ATAQUE'}"
+                  th:text="'Daño: ' + (${carta.danoMin != null ? carta.danoMin : 0}) + ' - ' + (${carta.danoMax != null ? carta.danoMax : 0})"></span>
 
-            <span class="card-stat" th:if="${carta.tipo == 'DEFENSA'}" th:text="'Defensa: ' + (${carta.defensaMin != null ? carta.defensaMin : 0}) + ' - ' + (${carta.defensaMax != null ? carta.defensaMax : 0})"></span>
+            <span class="card-stat" th:if="${carta.tipo == 'DEFENSA'}"
+                  th:text="'Defensa: ' + (${carta.defensaMin != null ? carta.defensaMin : 0}) + ' - ' + (${carta.defensaMax != null ? carta.defensaMax : 0})"></span>
 
             <span class="card-stat util" th:if="${carta.tipo == 'HECHIZO'}" th:text="${carta.descripcion}"></span>
         </button>
