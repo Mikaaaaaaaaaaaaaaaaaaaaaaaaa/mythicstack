@@ -70,11 +70,15 @@
 
   <div align="center">
   <h2>📸 VISTAS DEL JUEGO 📸</h2>
-  <img src="1.JPG" alt="Lobby" width="800">
+  <img src="img/1.JPG" alt="Lobby" width="800">
 
-<img src="2.JPG" alt="Deckbuilding" width="800">
+<img src="img/2.JPG" alt="Deckbuilding" width="800">
 
-<img src="3.JPG" alt="Combate" width="800">
+<img src="img/3.JPG" alt="Combate" width="800">
+
+<img src="img/4.PNG" alt="Tienda" width="800">
+
+<img src="img/5.PNG" alt="Inventario" width="800">
 </div>
 
   <br>
